@@ -5,6 +5,8 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 body{
+    display: flex;
+    flex-direction: column;
     background-color: rgb(20, 8, 31);
     color: white;
 }
@@ -26,6 +28,9 @@ body{
     font-size: 24px;
     text-decoration: none;
     color: white;
+    cursor: default;
+    opacity: 0;
+    animation: toRight 1s ease forwards;
 }
 .navbar a{
     display: inline-block;
@@ -34,23 +39,27 @@ body{
     font-weight: 500;
     margin-left: 35px;
     color: white;
+    opacity: 0;
+    animation: toTop 0.5s ease forwards;
 }
 .navbar a:hover{
     color: rgb(142, 77, 203);
-    box-shadow: 0 0 50px rgb(142, 77, 203);
-    border-radius: 20px;
     padding: 8px;
+}
+#menu-icon{
+    font-size: 3.6rem;
+    color: white;
+    display: none;
 }
 .home{
     position: relative;
     width: 100%;
     height: 100vh;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     background-size:400px ;
     display: flex;
     align-items: center;
-    padding: 70px 10%;
+    padding: 70px 10% 0;
     gap: 20px;
 }
 .img {
@@ -75,14 +84,23 @@ body{
 .container-home h1{
     font-size: 50px;
     font-weight: 700;
+    margin: -3px 0;
+    opacity: 0;
+    animation: toBotton 1s ease forwards;
+    animation-delay: 0.9s;
 }
 .container-home h3{
     font-size: 30px;
     font-weight: 700;
     margin: -3px 0;
+    opacity: 0;
+    animation: toBotton 1s ease forwards;
+    animation-delay: 0.7s;
 }
 .container-home p{
     font-size: 20px;
+    opacity: 0;
+    animation: toLeft 1s ease forwards;
 }
 .social a{
     display: inline-flex;
@@ -90,12 +108,16 @@ body{
     align-items: center;
     width: 30px;
     height: 30px;
+    background: transparent;
     border: 2px solid rgb(142, 77, 203);
     border-radius: 50%;
     font-size: 19px;
     color: rgb(142, 77, 203);
     margin: 30px 15px 30px 0;
     text-decoration: none;
+    opacity: 0;
+    animation: toLeft 1s ease forwards;
+    animation-delay: 0.4s;
 }
 .social a:hover{
     background: rgb(142, 77, 203);
@@ -199,7 +221,11 @@ body{
     font-size: 16px;
     letter-spacing: 1px;
     font-weight: 600;
-    box-shadow: 1px 1px 20px rgb(74, 30, 114) ;
+    box-shadow: 0px 0px 5px rgb(74, 30, 114),
+                0 0 25px rgb(74, 30, 114);
+    opacity: 0;
+    animation: toTop 1s ease forwards;
+    animation-delay: 1s;
 }
 .services-list div:hover{
     transform: translateY(-10px);
@@ -255,8 +281,15 @@ section{
     height: 100%;
     background-color: #c288da;
     border-radius: 5px;
+    animation: animate 1s cubic-bezier(1,0,0,5) forwards;
+    transform: scaleX(0);
+    transform-origin: left;
 }
-
+@keyframes animate{
+    100%{
+        transform: scaleX(1);
+    }
+}
 .lang-level.html span {
     width: 95%;
 }
@@ -271,11 +304,18 @@ section{
 .lang-level.cAddition span {
     width: 90%;
 }
+.lang-level.react span {
+    width: 60%;
+}
+.lang-level.bootstrap span {
+    width: 70%;
+}
 .contact{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 24px;
+    padding-left: 30px;
     margin-top: 140px;
 }
 .contact-text{
@@ -285,7 +325,6 @@ section{
     align-items: center;
 }
 .contact-text h2{
-    margin-bottom: 80px;
     font-size: 90px;
     text-align: center;
 
@@ -294,13 +333,12 @@ section{
     color: rgb(142, 77, 203);
 }
 .contact-text h4{
-    margin-top: -5px;
-    margin-bottom: 10px;
+    margin: 15px 0;
     font-size: 20px;
     font-weight: 600;
 }
 .contact-list{
-    margin-bottom: 30px;
+    margin-bottom: 3rem;
 }
 .contact-list li{
     margin-bottom: 10px;
@@ -316,14 +354,16 @@ section{
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border: 2px solid rgb(142, 77, 203);
     border-radius: 50%;
     font-size: 19px;
     color: rgb(142, 77, 203);
     margin: 30px 15px 30px 0;
-    text-decoration: none
+    text-decoration: none;
+    opacity: 0;
+    animation: toLeft 1s ease forwards;
 }
 .contact-icons i:hover{
     background: rgb(142, 77, 203);
@@ -340,8 +380,8 @@ section{
     background: #444141;
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 10px;
-    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
 }
 .contact-form textarea{
     resize: none;
@@ -350,21 +390,80 @@ section{
 .contact-form form .btn{
     display: inline-block;
     color: white;
-    padding: 12px 20px;
+    padding: 14px 60px;
     background: rgb(142, 77, 203);
     border-radius: 40px;
-    font-size: 16px;
+    font-size: 18px;
     letter-spacing: 1px;
     font-weight: 600;
     box-shadow: 1px 1px 20px rgb(74, 30, 114) ;
 }
 .footer {
     background-color: #1A0B2E;
-    text-align: center;
     height: 50px;
+    width: 100vw; 
+    font-size: 19px;
+    box-sizing: border-box; 
     padding: 16px 10px;
     margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+
+
+
+@keyframes toRight{
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+@keyframes toLeft{
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes toTop{
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+@keyframes toBotton{
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 @media screen and (max-width: 1024px) {
@@ -434,9 +533,70 @@ section{
     .contact {
     padding-left: 0;
     }
+    .services-list{
+    grid-template-columns: 1fr;
+    padding-left: 10px; 
+    margin-top: 80px; 
+    width: 100%;
+    }
+    .container-skills{
+        font-size: 24px;
+        margin: 12px;
+    }
+    #menu-icon{
+        display: block;
+    }
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 3%;
+        background: rgb(49, 22, 59);
+        border-top: .1rem solid rgb(49, 22, 59);
+        display: none;
+    }
+    .navbar.active{
+        display: block;
+    }
+    .navbar a{
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+    }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
+    body, 
+    .container-serve,
+    .services-list,
+    .about-me,
+    .contact,
+    .container-home,
+    .about-text,
+    .contact-text {
+    width: 100%;
+    max-width: 550px; 
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+    body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    text-align: center; 
+}
+
+    .services-list {
+    justify-content: center !important; 
+    grid-template-columns: 1fr !important; 
+}
+
     .container-home h1 {
     font-size: 28px;
     }
@@ -459,4 +619,24 @@ section{
     font-size: 12px;
     padding: 10px;
     }
+    .contact {
+        grid-template-columns: 1fr;
+        padding-left: 10px; 
+        margin-top: 80px; 
+        width: 100%;
+    }
+    .contact-text h2 {
+        font-size: 36px;
+    }
+    .contact-text h4 {
+        font-size: 16px;
+    }
+    .services-list div {
+    aspect-ratio: 1 / 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 }
